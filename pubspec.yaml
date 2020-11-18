@@ -1,7 +1,6 @@
 name: international_phone_field
 description: Validating numbers base on selected country
 version: 0.0.1
-author: Rexford Asamoah<rexfordasamaoh51@gmail.com>
 homepage: https://github.com/Rexfordasamoah51/international_phone_field
 
 environment:
