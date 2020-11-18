@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  libphonenumber: ^1.0.2
+  libphonenumber: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -22,9 +22,10 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter: 
    uses-material-design: true
-# To add assets to your package, add an assets section, like this:
    assets:
-     - assets/countries.json
+        - assets/countries.json
+
+      
 #   - images/a_dot_ham.jpeg
 #
 # For details regarding assets in packages, see

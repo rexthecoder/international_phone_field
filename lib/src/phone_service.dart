@@ -1,12 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:libphonenumber/libphonenumber.dart';
+import 'package:flutter/services.dart';
 
-import 'country.dart';
+import '../international_phone_field.dart';
 
 class PhoneService {
+  /// reading potential countries
+  ///
+  /// [getPotentialCountries] for reading potential countries from enable countries
   static List<Country> getPotentialCountries(
       String number, List<Country> countries) {
     List<Country> result = [];
@@ -15,7 +18,7 @@ class PhoneService {
           generatePotentialDialCodes(number, 0, number.length);
       for (var code in potentialCodes) {
         for (var country in countries) {
-          if (code == country.dial) {
+          if (code == country.dialCode) {
             result.add(country);
           }
         }
@@ -26,7 +29,7 @@ class PhoneService {
       List<String> potentialCodes = generatePotentialDialCodes(intlCode, 0, 4);
       for (var code in potentialCodes) {
         for (var country in countries) {
-          if (code == country.dial) {
+          if (code == country.dialCode) {
             result.add(country);
           }
         }
@@ -35,6 +38,9 @@ class PhoneService {
     return result;
   }
 
+  /// Generating Potentional Dial codes
+  ///
+  /// This function is use to generate Potentional Dial codde from the number input
   static List<String> generatePotentialDialCodes(
       String number, int index, int length) {
     List<String> digits = number.split('');
@@ -72,6 +78,10 @@ class PhoneService {
     }
   }
 
+  /// Fetch Country data
+  ///
+  /// This is use to fetch all the country data from the json file and assign it to the object country
+
   static Future<List<Country>> fetchCountryData(
       BuildContext context, String jsonFile) async {
     var list = await DefaultAssetBundle.of(context).loadString(jsonFile);
@@ -80,14 +90,13 @@ class PhoneService {
     jsonList.forEach((s) {
       Map elem = Map.from(s);
       elements.add(Country(
-              name: elem['name'],
-            iso2: elem['iso2'],
-            dial: elem['dial'],
-            uniCode: elem['unicode'],
-            capital: elem['capital'],
-            continent: elem['continent'],
-            currency: elem['currency'],
-            iso3: elem['iso3']));
+          name: elem['Name'],
+          code: elem['Iso2'],
+          dialCode: elem['Dial'],
+          flagUri: elem['Unicode'],
+          currency: elem['Currency'],
+          capital: elem['Capital'],
+          continent: elem['Continent']));
     });
     return elements;
   }

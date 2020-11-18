@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'country.dart';
-import 'phone_service.dart';
-
+import 'package:international_phone_field/src/country.dart';
+import 'package:international_phone_field/src/phone_service.dart';
 
 class InternationalPhoneInputText extends StatefulWidget {
   final Function(
@@ -91,13 +90,13 @@ class _InternationalPhoneInputTextState
       if (potentialCountries != null) {
         for (var country in potentialCountries) {
           //isolate local number before parsing. Using length-1 to cut the '+'
-          String localNumber = number.substring(country.dial.length - 1);
+          String localNumber = number.substring(country.dialCode.length - 1);
           isValid =
-              await PhoneService.parsePhoneNumber(localNumber, country.iso2);
+              await PhoneService.parsePhoneNumber(localNumber, country.code);
           if (isValid) {
             fullNumber = await PhoneService.getNormalizedPhoneNumber(
-                localNumber, country.iso2);
-            widget.onValidPhoneNumber(localNumber, fullNumber, country.iso2);
+                localNumber, country.code);
+            widget.onValidPhoneNumber(localNumber, fullNumber, country.code);
           }
         }
       }

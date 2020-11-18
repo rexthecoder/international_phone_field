@@ -27,9 +27,17 @@ class _MyHomePageState extends State<MyHomePage> {
   bool visible = false;
   String confirmedNumber = '';
 
-void onPhoneNumberChange(
-      String number, String internationalizedPhoneNumber, String isoCode, String game) {
+  void onPhoneNumberChange(
+      String number,
+      String internationalizedPhoneNumber,
+      String isoCode,
+      String code,
+      String capital,
+      String continent,
+      String currency,
+      String name) {
     print(number);
+    print(currency);
     setState(() {
       phoneNumber = number;
       phoneIsoCode = isoCode;
@@ -58,8 +66,13 @@ void onPhoneNumberChange(
               onPhoneNumberChange: onPhoneNumberChange,
               initialPhoneNumber: phoneNumber,
               initialSelection: phoneIsoCode,
-              enabledCountries: ['+233', '+1'],
+              enabledCountries: ['+233', '+234'],
               labelText: "Phone Number",
+              addCountryComponentInsideField: false,
+              // border: OutlineInputBorder(
+              //   gapPadding: 20.0,
+              //   borderRadius: BorderRadius.circular(10),
+              // ),
             ),
             SizedBox(height: 20),
             InternationalPhoneInput(
@@ -85,7 +98,37 @@ void onPhoneNumberChange(
               child: Text(confirmedNumber),
               visible: visible,
             ),
-            Spacer(flex: 2)
+            Spacer(flex: 2),
+            // Container(
+            //     height: 50,
+            //     child: TextFormField(
+            //       maxLength: 12,
+            //       buildCounter: (BuildContext context,
+            //               {int currentLength, int maxLength, bool isFocused}) =>
+            //           null,
+            //       decoration: InputDecoration(
+            //         border: OutlineInputBorder(
+            //           gapPadding: 20.0,
+            //           borderRadius: BorderRadius.circular(10),
+            //         ),
+            //         prefixIcon: Padding(
+            //             padding: const EdgeInsets.only(left: 10.0),
+            //             child: Text("H")),
+            //         focusColor: Color(0xff5662FE),
+            //         labelText: "Phone Number",
+            //         labelStyle: TextStyle(color: Colors.black26),
+            //       ),
+            //       validator: (value) {
+            //         if (value.isEmpty) {
+            //           return "Enter your phone number";
+            //         } else {
+            //           return null;
+            //         }
+            //       },
+            //       onChanged: (value) {},
+            //       keyboardType: TextInputType.number,
+            //       style: TextStyle(fontFamily: "Poppins"),
+            //     )),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
