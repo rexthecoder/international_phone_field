@@ -6,3 +6,6 @@
 
 * Updated Readme 
 * Fix Issues
+
+## [0.0.2] - 18/11/2020
+* Updated Usage
