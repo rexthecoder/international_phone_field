@@ -323,7 +323,7 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
 
   ///Validating the number
   ///
-  ///This function validate the user type number. 
+  ///This function validate the user type number.
   _validatePhoneNumber() {
     String phoneText = phoneTextController.text;
     if (phoneText != null && phoneText.isNotEmpty) {
@@ -362,9 +362,10 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
       });
     }
   }
- /// Fatching country Data
- /// 
- /// This is use to get all the selected item
+
+  /// Fatching country Data
+  ///
+  /// This is use to get all the selected item
   Future<List<Country>> _fetchCountryData() async {
     var list = await DefaultAssetBundle.of(context)
         .loadString('packages/international_phone_field/assets/countries.json');
@@ -400,15 +401,16 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
 
     return countries;
   }
+
   /// Dialog Design
-  /// 
+  ///
   /// [_changeCountry] use for changing the display country and also for displaying [Dialog] box
-   Future<void> _changeCountry() async {
+  Future<void> _changeCountry() async {
     var filteredCountries = itemList;
     await showDialog(
       context: context,
       useRootNavigator: false,
-      child: StatefulBuilder(
+      builder: (context) => StatefulBuilder(
         builder: (ctx, setState) => Dialog(
           child: Container(
             padding: EdgeInsets.all(10),
@@ -417,7 +419,7 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
                 TextField(
                   decoration: InputDecoration(
                     suffixIcon: Icon(Icons.search),
-                    labelText: "Type something",
+                    labelText: "Type country name",
                   ),
                   onChanged: (value) {
                     setState(() {
@@ -511,7 +513,7 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
   }
 
   /// DropDown like Icon
-  /// 
+  ///
   /// [dropDownButton] use for setting the item needed to display for users to set
   Container dropDownButton() {
     return Container(

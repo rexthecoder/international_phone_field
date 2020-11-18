@@ -12,5 +12,12 @@ class Country {
   final String capital;
 
   final String continent;
-  Country({this.name, this.code, this.flagUri, this.dialCode,this.currency,this.capital,this.continent});
+  Country(
+      {this.name,
+      this.code,
+      this.flagUri,
+      this.dialCode,
+      this.currency,
+      this.capital,
+      this.continent});
 }
