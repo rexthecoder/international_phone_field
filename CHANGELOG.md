@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 18/11/2020.
 
-* TODO: Describe initial release.
+* Born International phone field for all.
