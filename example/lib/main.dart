@@ -27,7 +27,6 @@ class _MyHomePageState extends State<MyHomePage> {
   // Intializing variables to be use
   String phoneNumber;
   String phoneIsoCode;
-  String hintElement;
   String selectedCountryCapital;
   String selectedCountryContinent;
   String selectedCountryCurrency;

@@ -15,13 +15,20 @@ import 'package:international_phone_field/international_phone_field.dart';
 String phoneNumber;
 String phoneIsoCode;
 
-void onPhoneNumberChange(String number, String internationalizedPhoneNumber, String isoCode) {
+  void onPhoneNumberChange(
+      String number,
+      String internationalizedPhoneNumber,
+      String isoCode,
+      String dialCode,
+      String countryCapital,
+      String countryContinent,
+      String countryCurrency,
+      String countryName) {
     setState(() {
-       phoneNumber = number;
-       phoneIsoCode = isoCode;
+      phoneNumber = number;
+      phoneIsoCode = isoCode;
     });
-}
-
+  }
 @override
  Widget build(BuildContext context) => Scaffold(
      body: Center(
