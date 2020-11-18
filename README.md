@@ -39,8 +39,8 @@ void onPhoneNumberChange(String number, String internationalizedPhoneNumber, Str
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-      ),
-     ),
- );
+            ),
+          ),
+       );
 
 ```
