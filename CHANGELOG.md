@@ -7,5 +7,6 @@
 * Updated Readme 
 * Fix Issues
 
-## [0.0.2] - 18/11/2020
+## [0.1.0] - 18/11/2020
 * Updated Usage
+* Package ready for usage
