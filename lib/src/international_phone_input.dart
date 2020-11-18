@@ -285,7 +285,7 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
   @override
   void initState() {
     errorText = widget.errorText ?? 'Please enter a valid phone number';
-    hintText = widget.hintText ?? 'eg. 244056345';
+    hintText = widget.hintText ?? '571148894';
     labelText = widget.labelText;
     errorStyle = widget.errorStyle;
     hintStyle = widget.hintStyle;

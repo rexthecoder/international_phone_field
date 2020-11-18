@@ -16,14 +16,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
+enum countryselect { nigeria, ghana }
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Intializing variables to be use
   String phoneNumber;
   String phoneIsoCode;
+  String hintElement;
+  String selectedCountryCapital;
+  String selectedCountryContinent;
+  String selectedCountryCurrency;
+  String selectedCountryName;
   bool visible = false;
   String confirmedNumber = '';
 
@@ -31,16 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
       String number,
       String internationalizedPhoneNumber,
       String isoCode,
-      String code,
-      String capital,
-      String continent,
-      String currency,
-      String name) {
+      String dialCode,
+      String countryCapital,
+      String countryContinent,
+      String countryCurrency,
+      String countryName) {
     print(number);
-    print(currency);
+
     setState(() {
       phoneNumber = number;
       phoneIsoCode = isoCode;
+      selectedCountryCapital = countryCapital;
+      selectedCountryContinent = countryContinent;
+      selectedCountryCurrency = countryCurrency;
+      selectedCountryName = countryName;
     });
   }
 
@@ -51,46 +63,49 @@ class _MyHomePageState extends State<MyHomePage> {
       confirmedNumber = internationalizedPhoneNumber;
     });
   }
+  //   var hintElement = countryselect;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('International Phone Input Example'),
+        title: Text('Example Project'),
+        centerTitle: true,
+        backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             Spacer(flex: 1),
-            InternationalPhoneInput(
-              onPhoneNumberChange: onPhoneNumberChange,
-              initialPhoneNumber: phoneNumber,
-              initialSelection: phoneIsoCode,
-              enabledCountries: ['+233', '+234'],
-              labelText: "Phone Number",
-              addCountryComponentInsideField: false,
-              // border: OutlineInputBorder(
-              //   gapPadding: 20.0,
-              //   borderRadius: BorderRadius.circular(10),
-              // ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: InternationalPhoneInput(
+                onPhoneNumberChange: onPhoneNumberChange,
+                initialPhoneNumber: phoneNumber,
+                initialSelection: phoneIsoCode,
+                enabledCountries: ['+233', '+234'],
+                labelText: "Enter your phone Number",
+                addCountryComponentInsideField: true,
+                border: OutlineInputBorder(
+                  gapPadding: 20.0,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
             SizedBox(height: 20),
-            InternationalPhoneInput(
-              decoration: InputDecoration.collapsed(hintText: '(123) 123-1234'),
-              onPhoneNumberChange: onPhoneNumberChange,
-              initialPhoneNumber: phoneNumber,
-              initialSelection: phoneIsoCode,
-              enabledCountries: ['+233', '+1'],
-              showCountryCodes: false,
-              showCountryFlags: true,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: InternationalPhoneInput(
+                onPhoneNumberChange: onPhoneNumberChange,
+                initialPhoneNumber: phoneNumber,
+                initialSelection: phoneIsoCode,
+                enabledCountries: ['+233', '+234'],
+                showCountryCodes: false,
+                labelText: "Hide country code",
+                addCountryComponentInsideField: false,
+              ),
             ),
             SizedBox(height: 20),
-            Container(
-              width: double.infinity,
-              height: 1,
-              color: Colors.black,
-            ),
-            SizedBox(height: 50),
             InternationalPhoneInputText(
               onValidPhoneNumber: onValidPhoneNumber,
             ),
@@ -99,39 +114,57 @@ class _MyHomePageState extends State<MyHomePage> {
               visible: visible,
             ),
             Spacer(flex: 2),
-            // Container(
-            //     height: 50,
-            //     child: TextFormField(
-            //       maxLength: 12,
-            //       buildCounter: (BuildContext context,
-            //               {int currentLength, int maxLength, bool isFocused}) =>
-            //           null,
-            //       decoration: InputDecoration(
-            //         border: OutlineInputBorder(
-            //           gapPadding: 20.0,
-            //           borderRadius: BorderRadius.circular(10),
-            //         ),
-            //         prefixIcon: Padding(
-            //             padding: const EdgeInsets.only(left: 10.0),
-            //             child: Text("H")),
-            //         focusColor: Color(0xff5662FE),
-            //         labelText: "Phone Number",
-            //         labelStyle: TextStyle(color: Colors.black26),
-            //       ),
-            //       validator: (value) {
-            //         if (value.isEmpty) {
-            //           return "Enter your phone number";
-            //         } else {
-            //           return null;
-            //         }
-            //       },
-            //       onChanged: (value) {},
-            //       keyboardType: TextInputType.number,
-            //       style: TextStyle(fontFamily: "Poppins"),
-            //     )),
+            selectedCountryName != null
+                ? tableDesign()
+                : Text(
+                    "Start typing and see the magic happen",
+                    style: TextStyle(fontSize: 17),
+                  )
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    );
+  }
+
+  DataTable tableDesign() {
+    return DataTable(
+      columnSpacing: 40,
+      columns: <DataColumn>[
+        DataColumn(
+          label: Text(
+            'Name',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Currency',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Continent',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Capital',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ),
+      ],
+      rows: <DataRow>[
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('$selectedCountryName')),
+            DataCell(Text('$selectedCountryCurrency')),
+            DataCell(Text('$selectedCountryContinent')),
+            DataCell(Text('$selectedCountryCapital')),
+          ],
+        ),
+      ],
     );
   }
 }
