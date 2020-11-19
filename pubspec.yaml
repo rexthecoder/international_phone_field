@@ -1,6 +1,6 @@
 name: international_phone_field
 description: Validating numbers and providing necessary detail base on selected country 
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/Rexfordasamoah51/international_phone_field
 
 environment:
