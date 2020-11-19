@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import '../international_phone_field.dart';
 import 'country.dart';
 
-class InternationalPhoneInput extends StatefulWidget {
+class InterField extends StatefulWidget {
   /// Returning selected country details
   ///
   ///  [onPhoneNumberChange] returns all infromation hold by the selected country
@@ -221,7 +221,7 @@ class InternationalPhoneInput extends StatefulWidget {
   ///
   /// [addCountryComponentInsideField] set wheather the country flag & code should be set as prefix
   final bool addCountryComponentInsideField;
-  InternationalPhoneInput(
+  InterField(
       {this.onPhoneNumberChange,
       this.initialPhoneNumber,
       this.dropDownArrowColor,
@@ -250,11 +250,10 @@ class InternationalPhoneInput extends StatefulWidget {
   }
 
   @override
-  _InternationalPhoneInputState createState() =>
-      _InternationalPhoneInputState();
+  _InterFieldState createState() => _InterFieldState();
 }
 
-class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
+class _InterFieldState extends State<InterField> {
   // Define blueprint and variable to be use in the code
   Country countries;
   Country selectedItem;
@@ -277,7 +276,7 @@ class _InternationalPhoneInputState extends State<InternationalPhoneInput> {
   InputDecoration decoration;
   Widget dropdownIcon;
 
-  _InternationalPhoneInputState();
+  _InterFieldState();
 
   final phoneTextController = TextEditingController();
 

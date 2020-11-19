@@ -56,7 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   onValidPhoneNumber(
-      String number, String internationalizedPhoneNumber, String isoCode) {
+      String number,
+      String internationalizedPhoneNumber,
+      String isoCode,
+      String dialCode,
+      String countryCapital,
+      String countryContinent,
+      String countryCurrency,
+      String countryName) {
     setState(() {
       visible = true;
       confirmedNumber = internationalizedPhoneNumber;
@@ -78,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Spacer(flex: 1),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-              child: InternationalPhoneInput(
+              child: InterField(
                 onPhoneNumberChange: onPhoneNumberChange,
                 initialPhoneNumber: phoneNumber,
                 initialSelection: phoneIsoCode,
@@ -94,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-              child: InternationalPhoneInput(
+              child: InterField(
                 onPhoneNumberChange: onPhoneNumberChange,
                 initialPhoneNumber: phoneNumber,
                 initialSelection: phoneIsoCode,
@@ -105,7 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: 20),
-            InternationalPhoneInputText(
+            NormalInterField(
+              displayPlusSign: false,
               onValidPhoneNumber: onValidPhoneNumber,
             ),
             Visibility(

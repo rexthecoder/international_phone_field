@@ -1,5 +1,5 @@
 # international_phone_field🌎
-Validating numbers and providing necessary detail base on selected country😃. The pacakge comes with a enough detail about the country which is super useful and save you from api issues🐻
+Validating numbers and providing necessary detail base on selected country😃. The pacakge comes with enough detail about the country which is super useful and save you from api issues🐻
 
 ## Simple project screenshot
 
@@ -11,7 +11,6 @@ Validating numbers and providing necessary detail base on selected country😃. 
 ## Usage
 ```dart
 import 'package:international_phone_field/international_phone_field.dart';
-
 String phoneNumber;
 String phoneIsoCode;
 
@@ -34,7 +33,7 @@ String phoneIsoCode;
      body: Center(
        child: Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-              child: InternationalPhoneInput(
+              child: InterField(
                 onPhoneNumberChange: onPhoneNumberChange,
                 initialPhoneNumber: phoneNumber,
                 initialSelection: phoneIsoCode,
